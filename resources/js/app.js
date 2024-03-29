@@ -4,6 +4,7 @@ import MainLayout from '@/Layouts/MainLayout.vue'
 import { ZiggyVue } from 'ziggy'
 import { InertiaProgress } from '@inertiajs/progress'
 import '../css/app.css'
+import store from './store';
 
 InertiaProgress.init({
   delay: 0,
@@ -27,6 +28,7 @@ createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue)
+      .use(store)
       .mount(el)
   },
 })

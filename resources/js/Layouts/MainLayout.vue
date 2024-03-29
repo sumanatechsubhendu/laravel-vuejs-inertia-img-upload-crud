@@ -6,7 +6,11 @@
           <Link :href="route('listing.index')">Listings</Link>
         </div>
         <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
-          <Link :href="route('listing.index')">LaraZillow</Link>
+          <Link :href="route('listing.index')">DEMO</Link>
+        </div>
+        <div>
+            <p>Example Data: {{ exampleData }}</p>
+            <button @click="fetchData">Fetch Data</button>
         </div>
         <div v-if="user" class="flex items-center gap-4">
           <Link
@@ -32,7 +36,7 @@
       </nav>
     </div>
   </header>
-  
+
   <main class="container mx-auto p-4 w-full">
     <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
       {{ flashSuccess }}
@@ -44,6 +48,15 @@
 <script setup>
 import { computed } from 'vue'
 import { Link, usePage } from '@inertiajs/inertia-vue3'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const exampleData = computed(() => store.getters.getExampleData)
+
+const fetchData = () => {
+  store.dispatch('fetchExampleData')
+}
 
 const page = usePage()
 const flashSuccess = computed(
