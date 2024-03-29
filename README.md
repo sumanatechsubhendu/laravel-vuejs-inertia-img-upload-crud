@@ -1,49 +1,51 @@
-<a href="https://www.udemy.com/user/piotr-jura">
-  <p align="center"><img alt="Piotr Jura - Udemy Instructor" src="https://avatars.githubusercontent.com/u/39863283?v=4" align="center" width="200"></p>
-  <h1 align="center">Piotr Jura Udemy Courses</h1>
-  <h2 align="center">Fado Code Camp</h2>
-</a>
+# Upload Multiple Images - Laravel 9.38, Vue.js 3 Edition, Inertia
 
-<p align="center">
-  High-quality, comprehensive courses for web developers.
-</p>
+## Introduction
 
-<p align="center">
-  <a href="#about-the-instructor"><strong>About the Instructor</strong></a> ·
-  <a href="#courses"><strong>Courses</strong></a> ·
-  <a href="#contact-and-links"><strong>Contact & Links</strong></a> ·
-  <a href="#course-resources"><strong>This Course Resources</strong></a>
-</p>
-<br/>
+This repository is an implementing of the [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Vue.js](https://vuejs.org). All of the authentication boilerplate is already written for you - powered by [Laravel Sanctum](https://laravel.com/docs/sanctum), allowing you to quickly begin pairing your beautiful Vue.js frontend with a powerful Laravel backend.
 
-## About the Instructor
+## Documentation
 
-I am Piotr Jura, a seasoned web developer and a passionate Udemy instructor. With years of experience in JavaScript, TypeScript, Node, PHP, MySQL, Vue, React, and more, I bring practical, real-world knowledge to my students.
+### Installation
 
-## Courses
+First, create a Vue.js compatible Laravel backend by installing Laravel Breeze into a [fresh Laravel application](https://laravel.com/docs/installation) and installing Breeze's API scaffolding:
 
-- [Master Nuxt 3 - Full-Stack Complete Guide](https://www.udemy.com/course/master-nuxt-full-stack-complete-guide/?referralCode=4EBA58BFBD39A31A9BE9)
-- [Symfony 6 Framework Hands-On 2023](https://www.udemy.com/course/symfony-framework-hands-on/?referralCode=6750F64C057515A5F787)
-- [Vue 3 Mastery: Firebase & More - Learn by Doing!](https://www.udemy.com/course/vuejs-course/?referralCode=26DAD96DAB47B4602DA3)
-- [Master NestJS - Node.js Framework 2023](https://www.udemy.com/course/master-nestjs-the-javascript-nodejs-framework/?referralCode=C8A3F83982053A5E44C0)
-- [Master Laravel with GraphQL, Vue.js, and Tailwind](https://www.udemy.com/course/master-laravel-with-graphql-vuejs-and-tailwind/?referralCode=CE3B5297B3614EFA884A)
-- [Master Laravel, Vue 3 & Inertia Full Stack 2023](https://www.udemy.com/course/master-laravel-6-with-vuejs-fullstack-development/?referralCode=4A6CED7AA1583CB709D6)
-- [Master Laravel 10 for Beginners & Intermediate 2023](https://www.udemy.com/course/laravel-beginner-fundamentals/?referralCode=E86A873AC47FB438D79C)
-- [Symfony API Platform with React Full Stack Masterclass](https://www.udemy.com/course/symfony-api-platform-reactjs-full-stack-masterclass/?referralCode=D2C29D1C641BB0CDBCD4)
+```bash
+# Create the Laravel application...
+laravel new vue-backend
 
-## Contact and Links
+cd vue-backend
 
-- **Blog:** [Fado Code Camp](https://fadocodecamp.com/)
-- **LinkedIn:** [Follow Me on LinkedIn](https://www.linkedin.com/in/piotr-j-24250b257/)
-- **GitHub:** You are here! Give me a follow!
-- **Twitter:** [@piotr_jura](https://twitter.com/piotr_jura)
+# Install Breeze and dependencies...
+composer require laravel/breeze
 
-## Course Resources
+php artisan breeze:install api
+```
 
-Coming up!
+Next, ensure that your application's `APP_URL` and `FRONTEND_URL` environment variables are set to `http://localhost:8000` and `http://localhost:3000`, respectively.
 
----
+After defining the appropriate environment variables, you may serve the Laravel application using the `serve` Artisan command:
 
-<p align="center">
-  <strong>Explore, Learn, and Grow with My Comprehensive Web Development Courses!</strong>
-</p>
+```bash
+# Serve the application...
+php artisan serve
+```
+
+Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env` and supply the URL of your backend:
+
+```
+VITE_APP_NAME=Breeze Vue.js 3 Api
+VITE_PUBLIC_BACKEND_URL=http://localhost:8000
+```
+
+Finally, run the application via `npm run dev`. The application will be available at `http://localhost:3000`:
+
+```
+npm run dev
+```
+
+> Note: Currently, we recommend using `localhost` during local development of your backend and frontend to avoid CORS "Same-Origin" issues.
+
+## License
+
+Laravel Breeze - Vue.js 3 Edition is open-sourced software licensed under the [MIT license](LICENSE.md).
