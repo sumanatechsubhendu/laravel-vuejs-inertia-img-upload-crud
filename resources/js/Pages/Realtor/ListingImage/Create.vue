@@ -33,11 +33,11 @@
     <template #header>Current Listing Images</template>
     <section class="mt-4 grid grid-cols-3 gap-4">
       <div
-        v-for="image in listing.images" :key="image.id" 
+        v-for="image in listing.images" :key="image.id"
         class="flex flex-col justify-between"
       >
-        <img :src="image.src" class="rounded-md" />
-        <Link 
+        <img :src="image.src" class="rounded-md" style="max-height: 160px;;"/>
+        <Link
           :href="route('realtor.listing.image.destroy', { listing: props.listing.id, image: image.id })"
           method="delete"
           as="button"

@@ -6,7 +6,21 @@
           <Link :href="route('listing.index')">Listings</Link>
         </div>
         <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
-          <Link :href="route('listing.index')">LaraZillow</Link>
+          <Link :href="route('listing.index')">DEMO</Link>
+        </div>
+        <div>
+            <p>Example Data:</p>
+            <div>
+                <div v-for="(listingData, index) in exampleData" :key="index">
+                <p>ID: {{ listingData.id }}</p>
+                <p>Beds: {{ listingData.beds }}</p>
+                <p>Baths: {{ listingData.baths }}</p>
+                <p>Area: {{ listingData.area }}</p>
+                <!-- Add to Cart Button -->
+                <button @click="deleteFromCart(index)" class="btn-normal btn-small-main-layout">Delete</button>
+                </div>
+            </div>
+            <button @click="fetchData">Fetch Data</button>
         </div>
         <div v-if="user" class="flex items-center gap-4">
           <Link
@@ -32,7 +46,7 @@
       </nav>
     </div>
   </header>
-  
+
   <main class="container mx-auto p-4 w-full">
     <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
       {{ flashSuccess }}
@@ -44,6 +58,19 @@
 <script setup>
 import { computed } from 'vue'
 import { Link, usePage } from '@inertiajs/inertia-vue3'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const exampleData = computed(() => store.getters.getExampleData)
+
+const fetchData = () => {
+  store.dispatch('fetchExampleData')
+}
+
+const deleteFromCart = (index) => {
+  store.commit('deleteFromCart', index); // Dispatching the 'deleteFromCart' mutation with the index of the item to delete
+};
 
 const page = usePage()
 const flashSuccess = computed(
@@ -56,3 +83,11 @@ const notificationCount = computed(
   () => Math.min(page.props.value.user.notificationCount, 9),
 )
 </script>
+<style>
+.btn-small-main-layout {
+  background-color:firebrick !important;
+  margin-left: 5px;;
+  padding: 5px 10px; /* Adjust padding to make the button smaller */
+  font-size: 12px; /* Adjust font size to make the text smaller */
+}
+</style>
