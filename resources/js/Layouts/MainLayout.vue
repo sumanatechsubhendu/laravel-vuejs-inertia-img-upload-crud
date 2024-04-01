@@ -17,7 +17,7 @@
                 <p>Baths: {{ listingData.baths }}</p>
                 <p>Area: {{ listingData.area }}</p>
                 <!-- Add to Cart Button -->
-                <button @click="deleteFromCart(index)" class="text-blue-600 underline">Delete</button>
+                <button @click="deleteFromCart(index)" class="btn-normal btn-small-main-layout">Delete</button>
                 </div>
             </div>
             <button @click="fetchData">Fetch Data</button>
@@ -83,3 +83,11 @@ const notificationCount = computed(
   () => Math.min(page.props.value.user.notificationCount, 9),
 )
 </script>
+<style>
+.btn-small-main-layout {
+  background-color:firebrick !important;
+  margin-left: 5px;;
+  padding: 5px 10px; /* Adjust padding to make the button smaller */
+  font-size: 12px; /* Adjust font size to make the text smaller */
+}
+</style>
