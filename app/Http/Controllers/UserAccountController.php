@@ -7,6 +7,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
 
 class UserAccountController extends Controller
 {
@@ -28,5 +29,11 @@ class UserAccountController extends Controller
 
         return redirect()->route('listing.index')
             ->with('success', 'Account created!');
+    }
+
+    public function index()
+    {
+        $users = User::all(); // Retrieve users from database
+        return Inertia::render('UserAccount/UserList', ['users' => $users]);
     }
 }

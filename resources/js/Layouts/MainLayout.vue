@@ -4,6 +4,7 @@
       <nav class="p-4 flex items-center justify-between">
         <div class="text-lg font-medium">
           <Link :href="route('listing.index')">Listings</Link>
+          <Link :href="route('users.index')" class="ml-5">Slot</Link>
         </div>
         <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
           <Link :href="route('listing.index')">DEMO</Link>

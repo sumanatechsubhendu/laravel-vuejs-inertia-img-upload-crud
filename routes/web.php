@@ -32,6 +32,9 @@ Route::get('/hello', [IndexController::class, 'show'])
 Route::resource('listing', ListingController::class)
   ->only(['index', 'show']);
 
+  Route::resource('users', UserAccountController::class)
+  ->only(['index', 'show']);
+
 Route::resource('listing.offer', ListingOfferController::class)
   ->middleware('auth')
   ->only(['store']);
