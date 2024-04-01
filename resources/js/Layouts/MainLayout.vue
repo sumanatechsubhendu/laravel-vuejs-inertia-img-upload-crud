@@ -9,7 +9,17 @@
           <Link :href="route('listing.index')">DEMO</Link>
         </div>
         <div>
-            <p>Example Data: {{ exampleData }}</p>
+            <p>Example Data:</p>
+            <div>
+                <div v-for="(listingData, index) in exampleData" :key="index">
+                <p>ID: {{ listingData.id }}</p>
+                <p>Beds: {{ listingData.beds }}</p>
+                <p>Baths: {{ listingData.baths }}</p>
+                <p>Area: {{ listingData.area }}</p>
+                <!-- Add to Cart Button -->
+                <button @click="deleteFromCart(index)" class="text-blue-600 underline">Delete</button>
+                </div>
+            </div>
             <button @click="fetchData">Fetch Data</button>
         </div>
         <div v-if="user" class="flex items-center gap-4">
@@ -57,6 +67,10 @@ const exampleData = computed(() => store.getters.getExampleData)
 const fetchData = () => {
   store.dispatch('fetchExampleData')
 }
+
+const deleteFromCart = (index) => {
+  store.commit('deleteFromCart', index); // Dispatching the 'deleteFromCart' mutation with the index of the item to delete
+};
 
 const page = usePage()
 const flashSuccess = computed(

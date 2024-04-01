@@ -19,6 +19,8 @@
           class="text-gray-500"
         />
       </Link>
+      <!-- Add to Cart Button -->
+      <button @click="addToCart(listing)" class="text-blue-600 underline">Add to Cart</button>
     </div>
   </Box>
 </template>
@@ -30,6 +32,13 @@ import Box from '@/Components/UI/Box.vue'
 import ListingSpace from '@/Components/ListingSpace.vue'
 import Price from '@/Components/Price.vue'
 import { useMonthlyPayment } from '@/Composables/useMonthlyPayment'
+import { useStore } from 'vuex'; // Import useStore from Vuex
+
+const store = useStore();
+
+const addToCart = (listing) => {
+  store.dispatch('addToCart', listing); // Dispatch addToCart action with listing as payload
+};
 
 const props = defineProps({ listing: Object })
 const { monthlyPayment } = useMonthlyPayment(
